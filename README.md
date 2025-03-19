@@ -7,4 +7,4 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-<h1>Project Bengkod Laravel</h1>
+<h1 align="center">Project Bengkod Laravel</h1>
