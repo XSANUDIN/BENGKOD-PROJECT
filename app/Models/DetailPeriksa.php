@@ -15,8 +15,8 @@ class DetailPeriksa extends Model
     public function obat(): BelongsTo{
         return $this->belongsTo(Obat::class, 'id_obat'); 
     }
-    
+
     public function periksa(): BelongsTo{
-        return $this->belongsTo(Periksa::class, 'id_obat'); 
+        return $this->belongsTo(Periksa::class, 'id_periksa'); 
     }
 }
