@@ -8,12 +8,11 @@ class Periksa extends Model
 {
     //
     protected $fillable =[
-        'nama',
-        'alamat',
-        'no_hp',
-        'email',
-        'password',
-        'role',
+        'id_pasien',
+        'id_dokter',
+        'tgl_periksa',
+        'catatan',
+        'biaya_periksa',
     ];
     
 

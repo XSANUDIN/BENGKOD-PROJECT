@@ -13,6 +13,9 @@ class Obat extends Model
         'harga',
     ];
 
+
+    //Relation
+
     public function obat(): HasMany{
         return $this->hasMany(DetailPeriksa::class, 'id_obat'); 
     }

@@ -12,6 +12,8 @@ class DetailPeriksa extends Model
         'id_obat',
     ];
 
+    //Relations
+
     public function obat(): BelongsTo{
         return $this->belongsTo(Obat::class, 'id_obat'); 
     }
