@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PeriksaPasienController;
+use App\Http\Controllers\RiwayatPasienController;
 
 Route::get('/', function () {
     return view('app');
@@ -41,11 +43,9 @@ Route::get('/pasien/dashboard', function () {
     return view('pasien.dashboard');
 })->name('pasien.dashboard');
 
-Route::get('/pasien/periksa', function () {
-    return view('pasien.periksa');
-})->name('pasien.periksa');
+Route::get('/pasien/periksa', [PeriksaPasienController::class, 'index'])->name('pasien.periksa');
+Route::get('/pasien/riwayat', [RiwayatPasienController::class, 'index'])->name('pasien.riwayat');
 
-Route::get('/pasien/riwayat', function () {
-    return view('pasien.riwayat');
-})->name('pasien.riwayat');
+
+
 

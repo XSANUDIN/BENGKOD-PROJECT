@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class Periksa extends Model
 {
+    protected $table = 'periksa';
+
     //
     protected $fillable =[
         'id_pasien',
@@ -19,11 +24,11 @@ class Periksa extends Model
     //Relation
 
     public function pasien(): BelongsTo{
-        return $this->belongsTo(Users::class, 'id_pasien');
+        return $this->belongsTo(User::class, 'id_pasien');
     }
 
     public function dokter(): BelongsTo{
-        return $this->belongsTo(Users::class, 'id_dokter');
+        return $this->belongsTo(User::class, 'id_dokter');
     }
 
     public function periksa(): HasMany{

@@ -18,21 +18,25 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Id Periksa</th>
-                        <th scope="col">Pasien</th>
+                        <th scope="col">Dokter</th>
                         <th scope="col">Tanggal Periksa</th>
                         <th scope="col">Catatan</th>
+                        <th scope="col">Obat</th>
                         <th scope="col">Biaya Periksa</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>P001</td>
-                        <td>Andi</td>
-                        <td>2025-04-10</td>
-                        <td>Riwayat sakit kepala</td>
-                        <td>Rp 200.000</td>
-                    </tr>
+                    @foreach($riwayat as $i => $item)
+                        <tr>
+                            <td>{{ $i + 1 }}</td>
+                            <td>P{{ str_pad($item->id, 3, '0', STR_PAD_LEFT) }}</td>
+                            <td>{{ $item->dokter->nama ?? '-' }}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->tgl_periksa)->format('Y-m-d') }}</td>
+                            <td>{{ $item->catatan ?? '-' }}</td>
+                            <td>Paramex</td>
+                            <td>Rp {{ number_format($item->biaya_periksa, 0, ',', '.') }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
