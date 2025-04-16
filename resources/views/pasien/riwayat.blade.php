@@ -33,7 +33,6 @@
                             <td>{{ $item->dokter->nama ?? '-' }}</td>
                             <td>{{ \Carbon\Carbon::parse($item->tgl_periksa)->format('Y-m-d') }}</td>
                             <td>{{ $item->catatan ?? '-' }}</td>
-                            <td>Paramex</td>
                             <td>Rp {{ number_format($item->biaya_periksa, 0, ',', '.') }}</td>
                         </tr>
                     @endforeach
