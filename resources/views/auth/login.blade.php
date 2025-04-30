@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @include('sweetalert::alert')
 
   </head>
   <body>
@@ -47,17 +48,18 @@
         <h5 class="col-lg-10 fs-4 my-2">Halaman Login</h5>
       </div>
       <div class="col-md-10 mx-auto col-lg-5">
-        <form class="p-4 p-md-5 border rounded-3 bg-light">
+        <form class="p-4 p-md-5 border rounded-3 bg-light" action="{{ route('login') }}" method="POST">
+          @csrf
         <div class="d-flex mx-2 my-3">
             <h4>Selamat Datang Kembali!</h5>
         </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email</label>
+            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput" >Email</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword" >Password</label>
           </div>
           <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
           <hr class="my-4">
@@ -65,6 +67,14 @@
               <small class="row"><a href="">Lupa Password?</a></small>
         </form>
       </div>
+      @if ($errors->any())
+        <ul class="bg-warning">
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      @endif
+
     </div>
 
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -102,8 +112,6 @@
  --}}
 
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
       
   </body>

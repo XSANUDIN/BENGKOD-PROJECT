@@ -8,26 +8,16 @@
     <div class="d-flex justify-content-center">
         <div class="col-sm-10">
             <form action="#" method="POST">
-                <!-- Nama Obat -->
                 <div class="form-group p-2">
-                    <label for="dokter">Input Nama</label>
+                    <label for="dokter">Nama Pasien</label>
                     <div class="input-group input-group-lg">
-                        <input type="text" id="dokter" name="dokter" class="form-control" placeholder="Input Nama" required>
+                        <input type="text" id="dokter" name="dokter" class="form-control" value="{{ Auth::user()->nama }}" readonly >
                     </div>
                 </div>
                 
-                <!-- Kemasan Obat -->
-                {{-- <div class="form-group p-2">
-                    <label for="rumahsakit">Pilih Dokter</label>
-                    <select name="" id="" class="form-select form-select-lg">
-                        <option selected>Tampilkan Semua</option>
-                        <option value="1">Spesialis</option>
-                    </select>
-                </div> --}}
-                
                 {{-- List Dokter --}}
 
-                <div class="form-group p-2">
+                {{-- <div class="form-group p-2">
                     <label for="dokter">Pilih Dokter</label>
                     <select name="id_dokter" id="dokter" class="form-select form-select-lg">
                         <option selected disabled>Pilih Dokter</option>
@@ -35,7 +25,7 @@
                             <option value="{{ $dokter->id }}">{{ $dokter->nama }}</option>
                         @endforeach
                     </select>
-                </div>
+                </div> --}}
 
                 {{-- <!-- Harga Obat -->
                 <div class="form-group p-2">
@@ -68,15 +58,31 @@
         </div>
     </div> --}}
     <div id="list-dokter" class="p-5 d-xl-flex flex-column justify-content-center">
+        <hr>
+        <div class="p-2">
+            <div class="d-flex justify-content-between align-items-center">
+            <h3 class="p-2 text-dark">List Dokter</h3>
+                <div class="form-inline mx-4 col-sm-4">
+                    <input type="text" class="form-control" placeholder="Cari..." />
+                </div>
+            </div>
+        </div>
+        <hr>
         <div class="row justify-content-start">
+                
             @forelse($dokterTampil as $dokter)
                 <div class="col-4 p-2">
                     <div class="card">
                         <div class="card-body">
                             <h5>Dr. {{ $dokter->nama }}</h5>
                             <p class="card-text">{{ $dokter->spesialis ?? 'Umum' }}</p>
+
+                            @include('pasien.components.modal', ['dokter'=>$dokter])
                             <a href="#" class="btn btn-outline-primary">Lihat Profile</a>
-                            <a href="#" class="btn btn-outline-primary">Appointment</a>
+
+                            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#periksaModal-{{ $dokter->id }}">
+                                Appointment
+                            </button>
                         </div>
                     </div>
                 </div>

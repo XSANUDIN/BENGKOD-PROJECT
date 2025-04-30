@@ -2,7 +2,10 @@
 
 @section('content')
 <div class="container-fluid">
-    <h3>Riwayat Periksa</h3>
+    <div class="text-center p-4">
+
+        <h3>List Riwayat Periksa</h3>
+    </div>
     <div class="mt-4">
         <div class="border border-bottom-0 bg-dark p-2 rounded-top">
             <div class="d-flex justify-content-between align-items-center">
@@ -31,8 +34,24 @@
                             <td>{{ $i + 1 }}</td>
                             <td>P{{ str_pad($item->id, 3, '0', STR_PAD_LEFT) }}</td>
                             <td>{{ $item->dokter->nama ?? '-' }}</td>
-                            <td>{{ \Carbon\Carbon::parse($item->tgl_periksa)->format('Y-m-d') }}</td>
+                            {{-- <td>{{ \Carbon\Carbon::parse($item->tgl_periksa)->format('Y-m-d') }}</td> --}}
+                            <td>{{ $item->tgl_periksa ?? '-' }}</td>
                             <td>{{ $item->catatan ?? '-' }}</td>
+                            <td>
+                                {{-- @foreach ($item->periksa as $detail)
+                                    {{ $detail->obat->nama_obat ?? '-' }}<br>
+                                @endforeach --}}
+                                @forelse ($item->periksa as $obats)
+                                @if ($obats->obat)
+                                    <span class="badge rounded-pill bg-gradient bg-primary d-inline-flex align-items-center px-3 py-2 shadow-sm">
+                                        <i class="bi bi-capsule me-1"></i> {{ $obats->obat->nama_obat }}
+                                    </span>
+                                @endif
+                            @empty
+                                <span class="text-muted fst-italic">-</span>
+                            @endforelse
+                            
+                            </td>
                             <td>Rp {{ number_format($item->biaya_periksa, 0, ',', '.') }}</td>
                         </tr>
                     @endforeach

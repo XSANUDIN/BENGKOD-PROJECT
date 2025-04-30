@@ -1,0 +1,64 @@
+
+.bi-box-arrow-right {
+    transition: fill 0.3s ease;  /* Optional: Smooth transition for color change */
+  }
+  
+.bi-box-arrow-right:hover {
+    color: red;  /* Change to red on hover */
+}
+
+#logoutButton:hover{
+    color: red;
+}
+   
+#logoutButton:active{
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+}
+   
+   
+   /* Sidebar Styling */
+.sidebar-link {
+    color: #ffffffce;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-link:hover {
+    background-color: #495057;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.sidebar-link.active {
+    background-color: #ffffff15; /* Bootstrap primary */
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: inset 4px 0 0 0 #ffffff33; /* subtle left border */
+}
+
+.sidebar-link.active i {
+    color: #ffffff;
+}
+
+.nav-link{
+    color: #ffffff;
+}
+
+/* Obats */
+
+
+/* Mobile Sidebar styles */
+@media (max-width: 991px) {
+    #sidebar {
+        display: none; /* Hide sidebar on mobile */
+    }
+
+    .offcanvas {
+        width: 250px;
+    }
+}
+
+

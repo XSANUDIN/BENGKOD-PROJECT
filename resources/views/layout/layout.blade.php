@@ -8,8 +8,14 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @vite('resources/js/app.js')
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.19.1/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.19.1/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 <body>
+    @include('sweetalert::alert')
     <div class="container-fluid">
         <div class="row">
 

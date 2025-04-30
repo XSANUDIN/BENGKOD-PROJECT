@@ -15,136 +15,62 @@
         <div class="table-responsive">
             <table class="table border">
                 <thead class="thead-dark">
-                    <tr>
+                    <tr class="">
                         <th scope="col">No</th>
-                        <th scope="col">Id Periksa</th>
-                        <th scope="col">Pasien</th>
+                        <th scope="col">Nama Pasien</th>
                         <th scope="col">Tanggal Periksa</th>
-                        <th scope="col">Catatan</th>
-                        <th scope="col">Biaya Periksa</th>
+                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>P001</td>
-                        <td>Andi</td>
-                        <td>2025-04-10</td>
-                        <td>Riwayat sakit kepala</td>
-                        <td>Rp 200.000</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>P002</td>
-                        <td>Siti</td>
-                        <td>2025-04-09</td>
-                        <td>Periksa mata</td>
-                        <td>Rp 150.000</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>P003</td>
-                        <td>Joko</td>
-                        <td>2025-04-08</td>
-                        <td>Periksa gigi</td>
-                        <td>Rp 300.000</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>P004</td>
-                        <td>Rina</td>
-                        <td>2025-04-07</td>
-                        <td>Periksa darah</td>
-                        <td>Rp 250.000</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>P005</td>
-                        <td>Rahmat</td>
-                        <td>2025-04-06</td>
-                        <td>Periksa jantung</td>
-                        <td>Rp 400.000</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>P006</td>
-                        <td>Lina</td>
-                        <td>2025-04-05</td>
-                        <td>Periksa kulit</td>
-                        <td>Rp 175.000</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>P007</td>
-                        <td>Budi</td>
-                        <td>2025-04-04</td>
-                        <td>Periksa THT</td>
-                        <td>Rp 225.000</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>P008</td>
-                        <td>Fitria</td>
-                        <td>2025-04-03</td>
-                        <td>Periksa kaki</td>
-                        <td>Rp 180.000</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>P009</td>
-                        <td>Yanto</td>
-                        <td>2025-04-02</td>
-                        <td>Periksa perut</td>
-                        <td>Rp 275.000</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>P010</td>
-                        <td>Umi</td>
-                        <td>2025-04-01</td>
-                        <td>Periksa gigi</td>
-                        <td>Rp 300.000</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>P011</td>
-                        <td>Arief</td>
-                        <td>2025-03-31</td>
-                        <td>Periksa mata</td>
-                        <td>Rp 150.000</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>P012</td>
-                        <td>Yulia</td>
-                        <td>2025-03-30</td>
-                        <td>Periksa darah</td>
-                        <td>Rp 250.000</td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>P013</td>
-                        <td>Fahmi</td>
-                        <td>2025-03-29</td>
-                        <td>Periksa jantung</td>
-                        <td>Rp 400.000</td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td>P014</td>
-                        <td>Vera</td>
-                        <td>2025-03-28</td>
-                        <td>Periksa kulit</td>
-                        <td>Rp 175.000</td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td>P015</td>
-                        <td>Andreas</td>
-                        <td>2025-03-27</td>
-                        <td>Periksa THT</td>
-                        <td>Rp 225.000</td>
-                    </tr>
+                    @forelse($periksa as $periksa)
+                        <tr class="">
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $periksa->pasien->nama }}</td>
+                            <td>{{ $periksa->tgl_periksa }}</td>
+                            <td class="d-flex gap-2">
+                                <a class="" href="{{ route('dokter.show', $periksa->id) }}">
+                                    <button class="btn btn-success">
+                                        Lihat
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
+                                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                                          </svg>
+                                    </button>
+                                </a>
+                                <a href="{{ route('dokter.edit', $periksa->id) }}">
+                                    <button class="btn btn-primary">
+                                        Edit
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                                        </svg>
+                                    </button>
+                                </a>
+                                <form id="deletePeriksa-{{ $periksa->id }}" action="{{ route('periksa.delete', $periksa->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="btn btn-danger"
+                                    onclick="confirmAction({
+                                        formId: 'deletePeriksa-{{ $periksa->id }}',
+                                        title: 'Konfirmasi Hapus',
+                                        text: 'Data ini akan dihapus permanen.',
+                                        confirmButtonText: 'Ya, hapus!',
+                                        cancelButtonText: 'Batal'
+                                    })">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </td>
+                            @empty
+                            <td></td>
+                            <td></td>
+                            <td>Tidak ada data pasien</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
